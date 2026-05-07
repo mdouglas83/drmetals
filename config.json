@@ -1,0 +1,54 @@
+{
+  "site": {
+    "name": "DR Metals",
+    "tagline": "Contract Manufacturing for OEM Component Programs",
+    "branding": {
+      "default_logo": "lowercase",
+      "font_match_note": "Closest common match to the historic lowercase wordmark: Helvetica Bold / Arial Bold / Nimbus Sans Bold.",
+      "logo_assets": {
+        "lowercase": "assets/img/logo-lowercase.svg",
+        "allcaps_ivy": "assets/img/logo-allcaps-ivy.svg"
+      }
+    },
+    "contact": {
+      "email": "team@drmetals.com",
+      "lead_recipient": "team@drmetals.com",
+      "phones": [
+        {
+          "label": "Toll Free",
+          "display": "800-270-4920",
+          "href": "+18002704920"
+        },
+        {
+          "label": "Local",
+          "display": "979-836-5102",
+          "href": "+19798365102"
+        }
+      ],
+      "address_lines": [
+        "1307 US Highway 290 W",
+        "Brenham, TX 77833"
+      ]
+    }
+  },
+  "form": {
+    "success_message": "Thanks. We received your request and will follow up soon.",
+    "error_message": "We could not send that right now. Please call or email us directly.",
+    "fallback_message": "Thanks. Your request was saved locally because outgoing email is not configured yet.",
+    "thanks_page": "thanks.php"
+  },
+  "mail": {
+    "enabled": false,
+    "transport": "php_mail",
+    "to": "team@drmetals.com",
+    "from": "website@drmetals.com",
+    "subject_prefix": "DR Metals Website Lead",
+    "smtp": {
+      "host": "",
+      "port": 587,
+      "username": "",
+      "password": "",
+      "encryption": "tls"
+    }
+  }
+}

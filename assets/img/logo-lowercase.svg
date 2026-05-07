@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="438" height="84" viewBox="0 0 438 84" role="img" aria-labelledby="title desc">
+  <title id="title">DR Metals lowercase logo concept</title>
+  <desc id="desc">Lowercase drmetals wordmark with burnt orange dr and dark metals text.</desc>
+  <rect width="438" height="84" fill="none"/>
+  <g font-family="Arial, Helvetica Neue, Helvetica, Nimbus Sans, sans-serif" font-size="64" font-weight="700" letter-spacing="-1.4">
+    <text x="0" y="60" fill="#b54821">dr</text>
+    <text x="76" y="60" fill="#171412">metals</text>
+  </g>
+</svg>

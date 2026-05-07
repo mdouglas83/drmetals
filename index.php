@@ -1,0 +1,457 @@
+<?php
+
+declare(strict_types=1);
+
+require __DIR__ . '/bootstrap.php';
+
+$siteName = (string) cfg($config, ['site', 'name'], 'DR Metals');
+$siteTagline = (string) cfg($config, ['site', 'tagline'], 'Contract Manufacturing for OEM Component Programs');
+$contactEmail = (string) cfg($config, ['site', 'contact', 'email'], 'team@drmetals.com');
+$phones = cfg($config, ['site', 'contact', 'phones'], []);
+$addressLines = cfg($config, ['site', 'contact', 'address_lines'], ['1307 US Highway 290 W', 'Brenham, TX 77833']);
+$status = isset($_GET['status']) ? (string) $_GET['status'] : '';
+$formErrorMessage = $status === 'error'
+    ? (string) cfg($config, ['form', 'error_message'], 'We could not send that right now. Please call or email us directly.')
+    : '';
+?>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><?php echo e($siteName); ?> | <?php echo e($siteTagline); ?></title>
+    <meta
+      name="description"
+      content="DR Metals supports OEM component programs with sourcing, contract manufacturing, paint, assembly, stocking, and release support from Brenham, Texas."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" href="favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" href="favicon.png" />
+    <link rel="shortcut icon" href="favicon.ico" />
+    <link rel="stylesheet" href="assets/css/site.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="<?php echo e($siteName); ?> home">
+        <span class="brand-wordmark" aria-label="drmetals">
+          <span class="brand-accent">dr</span><span class="brand-rest">metals</span>
+        </span>
+      </a>
+      <button
+        class="menu-toggle"
+        type="button"
+        aria-expanded="false"
+        aria-controls="site-nav"
+      >
+        Menu
+      </button>
+      <nav class="site-nav" id="site-nav" aria-label="Primary">
+        <a href="#contract">Contract Manufacturing</a>
+        <a href="#components">Components</a>
+        <a href="#workflow">How It Works</a>
+        <a href="#operations">Operations</a>
+        <a href="#contact">Request a Quote</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="hero-image-wrap">
+          <img
+            class="hero-image"
+            src="assets/img/hero.jpg"
+            alt="Industrial assembly space with organized metal components and work areas"
+          />
+        </div>
+        <div class="hero-scrim"></div>
+        <div class="hero-content">
+          <p class="eyebrow">Contract Manufacturing | Brenham, TX</p>
+          <h1>Send us the part. We'll keep the program moving.</h1>
+          <p class="hero-copy">
+            <?php echo e($siteName); ?> supports OEM component programs with sourcing, contract
+            manufacturing, paint assembly, stocking, and release support from Brenham,
+            Texas. Bring the drawing, the sample, the assembly, or the trouble
+            spot. We will help turn it into product that is ready when you need it.
+          </p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#contact">Start a Request</a>
+            <a class="button button-secondary" href="#workflow">See How It Works</a>
+          </div>
+        </div>
+        <div class="hero-foot">
+          <p>
+            Castings. Fabrications. Rubber. Plastics. Coating. Assembly. Stock &amp;
+            Release.
+          </p>
+        </div>
+      </section>
+
+      <section class="signal-strip" aria-label="DR Metals operating signals">
+        <div>
+          <strong>OEM Program Support</strong>
+          <span>Manufacturing, paint, assembly, and distribution</span>
+        </div>
+        <div>
+          <strong>Component Range</strong>
+          <span>Iron, brass, aluminum, steel, rubber, plastics</span>
+        </div>
+        <div>
+          <strong>AFS Member</strong>
+          <span>Casting Buyer / Designer</span>
+        </div>
+        <div style="border-right: 0;">
+          <strong>Texas Base</strong>
+          <span><?php echo e((string) ($addressLines[0] ?? '1307 US Highway 290 W')); ?></span>
+          <span><?php echo e((string) ($addressLines[1] ?? 'Brenha, TX 77833')); ?></span>
+        </div>
+      </section>
+
+      <section class="section lead-in" id="contract">
+        <div class="lead-layout">
+          <div class="section-heading">
+            <p class="eyebrow">Contract Manufacturing First</p>
+            <h2>The work gets easier when the right company owns the middle.</h2>
+          </div>
+          <div class="lead-copy">
+            <p class="lead-statement">
+              There is a point where a part stops being just a part. Drawings,
+              tooling, vendors, inspections, packaging, storage, release schedules,
+              freight, and surprises all start showing up around it.
+            </p>
+            <p>
+              That is where <?php echo e($siteName); ?> does its best work. We help OEM buyers move
+              from requirement to delivered product without turning every detail
+              into a second job for their team.
+            </p>
+            <p>
+              You stay in control of the requirements and the decisions. We handle
+              the messy middle: sourcing, coordination, assembly support, packing,
+              stocking, and release. Good programs should feel calm by the time
+              they reach your desk.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section capability-section" id="components">
+        <div class="section-heading wide-heading">
+          <p class="eyebrow">Capabilities</p>
+          <h2>Built for component programs that need less drama and more follow-through.</h2>
+        </div>
+        <div class="capability-grid">
+          <article>
+            <h3>Contract Manufacturing</h3>
+            <p>
+              Support for recurring industrial programs that need sourced parts,
+              coordinated manufacturing, assembled product, and a clean path to
+              release.
+            </p>
+          </article>
+          <article>
+            <h3>Component Sourcing</h3>
+            <p>
+              Castings, fabrications, rubber products, plastics, fasteners,
+              coatings, and adjacent industrial components can be brought into one
+              practical program.
+            </p>
+          </article>
+          <article>
+            <h3>Castings and Metal Parts</h3>
+            <p>
+              Finished ductile and gray iron, brass, aluminum, and steel castings,
+              along with fabricated metal parts for industrial OEM needs.
+            </p>
+          </article>
+          <article>
+            <h3>Assembly and Handling</h3>
+            <p>
+              Brenham-based receiving, fit-up, light assembly support, packing,
+              labeling, staging, and program handling keep the physical work close
+              and accountable.
+            </p>
+          </article>
+          <article>
+            <h3>Stocking and Release</h3>
+            <p>
+              Inventory planning, warehousing, release timing, and outbound
+              coordination are available for programs that need product ready
+              before the next call.
+            </p>
+          </article>
+          <article>
+            <h3>Tooling and Engineering Coordination</h3>
+            <p>
+              Drawings, samples, tooling questions, outside processes, and practical
+              production concerns get sorted into a path that can be quoted,
+              managed, and repeated.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section image-band calm-band">
+        <div class="image-band-copy">
+          <p class="eyebrow">A Quieter Kind of Control</p>
+          <h2>You do not need to watch every turn for the work to stay on course.</h2>
+          <p>
+            Send the requirement. We put the pieces in order: source, receive,
+            assemble, pack, stock, and release. You can ask for detail at any point,
+            but you should not have to live inside the machinery of it.
+          </p>
+          <p>
+            Good programs feel calm from the outside. The shelves are right, the
+            parts are labeled, the next release is known, and the questions arrive
+            early enough to be useful.
+          </p>
+        </div>
+        <div class="image-band-media">
+          <img
+            src="assets/img/components.jpg"
+            alt="Finished metal components arranged on a work surface"
+          />
+        </div>
+      </section>
+
+      <section class="section workflow" id="workflow">
+        <div class="section-heading wide-heading">
+          <p class="eyebrow">How It Works</p>
+          <h2>Easy to start. Easy to steer. Out of your way until it matters.</h2>
+        </div>
+        <div class="workflow-list">
+          <article>
+            <span>01</span>
+            <h3>Send what you have.</h3>
+            <p>
+              A drawing, sample, bill of materials, estimated annual usage, current
+              supplier problem, or rough timing note is enough to begin the
+              conversation.
+            </p>
+          </article>
+          <article>
+            <span>02</span>
+            <h3>We shape the path.</h3>
+            <p>
+              Material, process, tooling, sourcing, assembly, storage, inspection,
+              packing, and freight assumptions get sorted into a workable plan.
+            </p>
+          </article>
+          <article>
+            <span>03</span>
+            <h3>The program gets handled.</h3>
+            <p>
+              Product moves through the right hands and lands in Brenham for
+              assembly, handling, stocking, and release support when the program
+              calls for it.
+            </p>
+          </article>
+          <article>
+            <span>04</span>
+            <h3>You decide. We release.</h3>
+            <p>
+              Your team reviews the moments that need a decision. When it is time
+              to move, product ships against the schedule, order, or release rhythm
+              your team uses.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section product-band">
+        <div class="section-heading wide-heading">
+          <p class="eyebrow">Program Range</p>
+          <h2>Industrial parts, assemblies, and stocked programs that need to show up ready.</h2>
+        </div>
+        <div class="program-layout">
+          <div class="program-copy">
+            <p class="lead-statement">
+              Some jobs need a quote. Some need a quietly managed path from part
+              requirement to finished product. <?php echo e($siteName); ?> is built for the second
+              kind too.
+            </p>
+            <p>
+              Supplier development is behind the curtain for a reason. The pitch is
+              not a tour of every relationship. The pitch is product that arrives
+              correctly, assemblies that are ready, releases that stay calm, and a
+              team that knows when to call you.
+            </p>
+          </div>
+          <div class="program-grid" aria-label="Typical DR Metals program areas">
+            <article>
+              <h3>Valve and Waterworks Components</h3>
+              <p>Cast, machined, coated, rubber, fastening, and adjacent component needs.</p>
+            </article>
+            <article>
+              <h3>Custom Industrial Castings</h3>
+              <p>Ductile iron, gray iron, brass, aluminum, and steel casting programs.</p>
+            </article>
+            <article>
+              <h3>Fabricated and Finished Parts</h3>
+              <p>Metal parts, coatings, outside processes, and finish requirements.</p>
+            </article>
+            <article>
+              <h3>Assembly-Ready Goods</h3>
+              <p>Components received, packed, staged, stocked, and ready for release.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section image-band stock-band">
+        <div class="image-band-copy">
+          <p class="eyebrow">Stocking and Distribution</p>
+          <h2>There is a difference between shipping product and keeping a program ready.</h2>
+          <p>
+            Distribution services are not a side note. They are the quiet
+            infrastructure that keeps work available without asking your team to
+            manage every shelf, label, date, and outbound detail.
+          </p>
+          <p>
+            The best version is almost boring: product is here, the plan is known,
+            the next release is waiting, and the work moves when you say so.
+          </p>
+        </div>
+        <div class="image-band-media">
+          <img
+            src="assets/img/warehouse.jpg"
+            alt="Organized warehouse aisle with industrial parts, pallets, and crates"
+          />
+        </div>
+      </section>
+
+      <section class="section operations" id="operations">
+        <div class="section-heading wide-heading">
+          <p class="eyebrow">Operations</p>
+          <h2>Brenham is where the program becomes real.</h2>
+        </div>
+        <div class="operations-layout">
+          <div>
+            <p class="operations-lead">
+              <?php echo e($siteName); ?> works from Brenham, Texas, with the practical rhythm of a
+              manufacturing floor and the patience of a company that has handled
+              component programs for years.
+            </p>
+            <p>
+              We are direct when the work needs a decision and quiet when it does
+              not. That is how a complicated program starts to feel simple.
+            </p>
+          </div>
+          <div class="operations-points">
+            <div>
+              <strong>Brenham, Texas base</strong>
+              <p>
+                Located on US Highway 290 W, positioned for practical Texas access
+                and close handling of product that needs attention before release.
+              </p>
+            </div>
+            <div>
+              <strong>OEM-oriented support</strong>
+              <p>
+                Manufacturing, paint, assembly, distribution, sourcing, tooling, stocking,
+                logistics, and transportation support are part of the DR
+                Metals operating model.
+              </p>
+            </div>
+            <div>
+              <strong>Casting buyer and designer connection</strong>
+              <p>
+                <?php echo e($siteName); ?> is listed with the American Foundry Society as a Casting
+                Buyer / Designer, reinforcing its place in the metalcasting buying
+                and specification world.
+              </p>
+            </div>
+            <div>
+              <strong>Direct conversation</strong>
+              <p>
+                We're here. Send the part, send the question, or call the
+                team. The first move should be easy.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section contact-section" id="contact">
+        <div class="contact-copy">
+          <p class="eyebrow">Start the Conversation</p>
+          <h2>Tell us what needs to be made, sourced, stocked, or released.</h2>
+          <p>
+            A drawing helps. A sample is better. A rough description is enough to start.
+            Share the part, the program, the timing, or the place where the current
+            path keeps getting heavy.
+          </p>
+          <div class="contact-notes">
+            <p>Helpful details to include:</p>
+            <ul>
+              <li>Part number, drawing, and material requirement</li>
+              <li>Annual usage, release rhythm, or target delivery timing</li>
+              <li>Assembly, packing, stocking, coating, or distribution needs</li>
+              <li>What you want to stop managing yourself</li>
+            </ul>
+          </div>
+          <div class="direct-contact">
+            <p>
+              <strong>Phone:</strong>
+              <?php foreach ($phones as $index => $phone): ?>
+              <?php if ($index > 0): ?> | <?php endif; ?><a href="tel:<?php echo e((string) ($phone['href'] ?? '')); ?>"><?php echo e((string) ($phone['display'] ?? '')); ?></a>
+              <?php endforeach; ?>
+            </p>
+            <p><strong>Email:</strong> <a href="mailto:<?php echo e($contactEmail); ?>"><?php echo e($contactEmail); ?></a></p>
+          </div>
+        </div>
+        <form class="lead-form" id="lead-form" action="contact.php" method="post">
+          <label class="trap" aria-hidden="true">
+            Leave this field empty
+            <input type="text" name="website" tabindex="-1" autocomplete="off" />
+          </label>
+          <label>
+            First name
+            <input type="text" name="first_name" autocomplete="given-name" required />
+          </label>
+          <label>
+            Last name
+            <input type="text" name="last_name" autocomplete="family-name" required />
+          </label>
+          <label>
+            Company
+            <input type="text" name="company" autocomplete="organization" />
+          </label>
+          <label>
+            Email
+            <input type="email" name="email" autocomplete="email" required />
+          </label>
+          <label>
+            Phone
+            <input type="tel" name="phone" autocomplete="tel" />
+          </label>
+          <label class="full-width">
+            Message
+            <textarea
+              name="message"
+              rows="6"
+              placeholder="Tell us about the part, program, release timing, or current sourcing problem."
+              required
+            ></textarea>
+          </label>
+          <button class="button button-primary" type="submit">Send Request</button>
+          <p class="form-status" id="form-status" aria-live="polite"><?php echo e($formErrorMessage); ?></p>
+        </form>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div>
+        <p><strong><?php echo e($siteName); ?></strong></p>
+        <p><?php echo e($addressLines[0]); ?></p>
+        <p><?php echo e($addressLines[1]); ?></p>
+      </div>
+      <a href="#top">Back to top</a>
+    </footer>
+
+    <script src="assets/js/site.js"></script>
+  </body>
+</html>
